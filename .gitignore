@@ -1,0 +1,5 @@
+/terraform.iml
+/learn-terraform-docker-container/terraform.tfstate
+/learn-terraform-docker-container/terraform.tfstate.backup
+/learn-terraform-docker-container/.terraform.lock.hcl
+/learn-terraform-docker-container/.terraform/
