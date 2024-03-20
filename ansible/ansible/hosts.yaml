@@ -3,14 +3,14 @@
 machines:
     hosts:
         jenkins-master:
-            ansible_host: 3.66.17.34
+            ansible_host: 3.120.191.221
             private_ip: 172.31.20.10
         selenium-hub:
-            ansible_host: 3.75.231.201
+            ansible_host: 3.66.163.86
             private_ip: 172.31.20.20
         selenium-node-1:
-            ansible_host: 3.72.8.250
+            ansible_host: 3.79.98.97
             private_ip: 172.31.20.30
         selenium-node-2:
-            ansible_host: 3.79.236.234
+            ansible_host: 18.185.113.129
             private_ip: 172.31.20.40

@@ -17,7 +17,7 @@ provider "aws" {
 
 resource "aws_instance" "jenkins-master" {
   ami           = "ami-023adaba598e661ac"
-  instance_type = "t2.micro"
+  instance_type = "t2.large"
   key_name = "mykeys"
   private_ip = "172.31.20.10"
   tags = {
@@ -59,5 +59,5 @@ resource "aws_instance" "selenium-node-2" {
 
 resource "aws_key_pair" "jenkins-master" {
   key_name = "mykeys"
-  public_key = file("~/.ssh/id_rsa_demo_aws.pub")
+  public_key = file("~/.ssh/id_rsa.pub")
 }

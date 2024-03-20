@@ -14,9 +14,24 @@
 - hosts: jenkins-master
   become: yes
   tasks:
+    - name: Install Java 17 - OpenJDK
+      apt:
+        name: openjdk-17-jdk-headless
+        state: present
+        update_cache: yes
+    - name: Install maven
+      apt:
+        name: maven
+        state: present
+        update_cache: yes
     - name: Download jenkins docker image
       community.docker.docker_image_pull:
         name: jenkins/jenkins
+    - name: Create folder for jenkins home
+      ansible.builtin.file:
+        path: /opt/jenkins_home
+        state: directory
+        mode: '0777'
     - name: Run Jenkins docker container
       docker_container:
         name: jenkins
