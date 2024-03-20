@@ -1,5 +1,11 @@
 /terraform.iml
-/learn-terraform-docker-container/terraform.tfstate
-/learn-terraform-docker-container/terraform.tfstate.backup
-/learn-terraform-docker-container/.terraform.lock.hcl
-/learn-terraform-docker-container/.terraform/
+/01-learn-terraform-docker-container/terraform.tfstate
+/01-learn-terraform-docker-container/terraform.tfstate.backup
+/01-learn-terraform-docker-container/.terraform.lock.hcl
+/01-learn-terraform-docker-container/.terraform/
+/tests/.idea/
+/.idea/
+/02-learn-terraform-aws-instance/.terraform.lock.hcl
+/02-learn-terraform-aws-instance/terraform.tfstate.backup
+/02-learn-terraform-aws-instance/terraform.tfstate
+/tests/screenshot.png

@@ -1,0 +1,67 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: Show machines private ip addresses
+      debug:
+        msg: "{{ private_ip }}"
+    - name: Install docker
+      apt:
+        name: docker.io
+        state: present
+        update_cache: yes
+
+- hosts: jenkins-master
+  become: yes
+  tasks:
+    - name: Download jenkins docker image
+      community.docker.docker_image_pull:
+        name: jenkins/jenkins
+    - name: Run Jenkins docker container
+      docker_container:
+        name: jenkins
+        image: jenkins/jenkins
+        cleanup: true
+        volumes:
+          - /opt/jenkins_home:/var/jenkins_home
+        ports:
+          - "8080:8080"
+          - "50000:50000"
+
+- hosts: selenium-hub
+  become: yes
+  tasks:
+    - name: Download selenium hub docker image
+      community.docker.docker_image_pull:
+        name: selenium/hub
+
+    - name: Run selenium hub container
+      docker_container:
+        name: selenium-hub
+        image: selenium/hub
+        cleanup: true
+        ports:
+          - "4442:4442"
+          - "4443:4443"
+          - "4444:4444"
+
+- hosts: selenium-node-1, selenium-node-2
+  become: yes
+  tasks:
+    - name: Download selenium node docker image
+      community.docker.docker_image_pull:
+        name: selenium/node-firefox
+
+    - name: Run selenium node docker container
+      docker_container:
+        name: selenium-node
+        image: selenium/node-firefox
+        cleanup: true
+        ports:
+          - "5555:5555"
+        env:
+          SE_EVENT_BUS_HOST: "172.31.20.20"
+          SE_EVENT_BUS_PUBLISH_PORT: "4442"
+          SE_EVENT_BUS_SUBSCRIBE_PORT: "4443"
+          SE_NODE_PORT: "5555"
+          SE_NODE_HOST: "{{ private_ip }}"

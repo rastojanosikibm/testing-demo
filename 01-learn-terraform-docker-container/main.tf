@@ -23,9 +23,3 @@ resource "docker_container" "nginx" {
     external = 8000
   }
 }
-
-resource "docker_container" "selenium-hub" {
-  image = docker_image.nginx.image_id
-  name  = "selenium-hub"
-
-}

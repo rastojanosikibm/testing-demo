@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+  ansible:
+    image: ansible
+    container_name: 'ansible'
+    volumes:
+      - ansible:ansible
+      - ~/.ssh:/home/.ssh
