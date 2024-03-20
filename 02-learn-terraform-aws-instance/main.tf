@@ -59,5 +59,5 @@ resource "aws_instance" "selenium-node-2" {
 
 resource "aws_key_pair" "jenkins-master" {
   key_name = "mykeys"
-  public_key = file("~/.ssh/id_rsa.pub")
+  public_key = file("~/.ssh/id_rsa_demo_aws.pub")
 }
