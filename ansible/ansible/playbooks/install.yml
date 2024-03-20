@@ -5,6 +5,7 @@
     - name: Show machines private ip addresses
       debug:
         msg: "{{ private_ip }}"
+
     - name: Install docker
       apt:
         name: docker.io
@@ -19,19 +20,32 @@
         name: openjdk-17-jdk-headless
         state: present
         update_cache: yes
-    - name: Install maven
-      apt:
-        name: maven
-        state: present
-        update_cache: yes
+
     - name: Download jenkins docker image
       community.docker.docker_image_pull:
         name: jenkins/jenkins
+
     - name: Create folder for jenkins home
       ansible.builtin.file:
         path: /opt/jenkins_home
         state: directory
-        mode: '0777'
+        owner: ubuntu
+        group: ubuntu
+        mode: '0755'
+
+    - name: Upload jenkins_home.zip to remote
+      ansible.posix.synchronize:
+        src: ./files/jenkins_home.zip
+        dest: /opt
+
+    - name: Unzip jenkins_home.zip
+      ansible.builtin.unarchive:
+        src: /opt/jenkins_home.zip
+        dest: /opt
+        owner: ubuntu
+        group: ubuntu
+        remote_src: yes
+
     - name: Run Jenkins docker container
       docker_container:
         name: jenkins

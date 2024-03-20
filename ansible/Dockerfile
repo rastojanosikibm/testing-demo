@@ -6,5 +6,5 @@ RUN python3 -m pip install ansible
 RUN apt-get update -y && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     sshpass
-
+RUN apt-get install rsync -y
 WORKDIR /ansible
