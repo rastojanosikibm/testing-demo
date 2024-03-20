@@ -27,7 +27,7 @@ resource "aws_instance" "jenkins-master" {
 
 resource "aws_instance" "selenium-hub" {
   ami           = "ami-023adaba598e661ac"
-  instance_type = "t2.micro"
+  instance_type = "t2.large"
   key_name = "mykeys"
   private_ip = "172.31.20.20"
   tags = {
@@ -37,7 +37,7 @@ resource "aws_instance" "selenium-hub" {
 
 resource "aws_instance" "selenium-node-1" {
   ami           = "ami-023adaba598e661ac"
-  instance_type = "t2.micro"
+  instance_type = "t2.large"
   key_name = "mykeys"
   private_ip = "172.31.20.30"
 
@@ -48,7 +48,7 @@ resource "aws_instance" "selenium-node-1" {
 
 resource "aws_instance" "selenium-node-2" {
   ami           = "ami-023adaba598e661ac"
-  instance_type = "t2.micro"
+  instance_type = "t2.large"
   key_name = "mykeys"
   private_ip = "172.31.20.40"
 
