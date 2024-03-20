@@ -21,6 +21,12 @@
         state: present
         update_cache: yes
 
+    - name: Install zip
+      apt:
+        name: zip
+        state: present
+        update_cache: yes
+
     - name: Download jenkins docker image
       community.docker.docker_image_pull:
         name: jenkins/jenkins
