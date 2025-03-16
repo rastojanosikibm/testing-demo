@@ -1,0 +1,13 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: Show machines private ip addresses
+      debug:
+        msg: "{{ private_ip }}"
+
+    - name: Install docker
+      apt:
+        name: docker.io
+        state: present
+        update_cache: yes
