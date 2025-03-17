@@ -19,7 +19,7 @@ public class DemoSteps {
     WebDriver driver;
 
 
-    private String seleniumHubUrl = "http://3.77.204.215:4444/wd/hub";
+    private String seleniumHubUrl = "http://3.70.99.220:4444/wd/hub";
 
     @BeforeScenario
     public void setup() {
